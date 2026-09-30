@@ -1,0 +1,1242 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+
+    <title>Un ramito para Harry 🏎️💙</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --blue: #0066ff;
+        --blue-light: #18a0ff;
+        --blue-dark: #03152f;
+        --deep: #020817;
+        --white: #fff;
+        --gray: #aab8ca;
+        --neon: #7df9ff;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        -webkit-text-size-adjust: 100%;
+      }
+
+      body {
+        min-height: 100vh;
+        min-height: 100dvh;
+        background:
+          radial-gradient(
+            circle at 50% 18%,
+            rgba(0, 102, 255, 0.25),
+            transparent 38%
+          ),
+          radial-gradient(
+            circle at 90% 85%,
+            rgba(24, 160, 255, 0.12),
+            transparent 40%
+          ),
+          linear-gradient(160deg, #010611, #03152f 55%, #010611);
+        background-attachment: fixed;
+        color: white;
+        font-family: "Poppins", sans-serif;
+        overflow-x: hidden;
+      }
+
+      button {
+        font-family: inherit;
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+      }
+
+      /* =====================================================
+         INTRO
+      ===================================================== */
+
+      .intro {
+        position: fixed;
+        inset: 0;
+        z-index: 999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: radial-gradient(circle at 50% 40%, #06204a, #020817 70%);
+        transition:
+          opacity 0.8s ease,
+          visibility 0.8s ease;
+      }
+
+      .intro.hide {
+        opacity: 0;
+        visibility: hidden;
+      }
+
+      .intro-content {
+        width: min(90%, 400px);
+        text-align: center;
+      }
+
+      .intro-car {
+        width: min(62vw, 230px);
+        height: auto;
+        filter: drop-shadow(0 20px 20px rgba(0, 0, 0, 0.5))
+          drop-shadow(0 0 25px rgba(0, 102, 255, 0.45));
+        animation: introMove 1.5s ease-in-out infinite;
+      }
+
+      @keyframes introMove {
+        0%,
+        100% {
+          transform: translateX(-12px) rotate(-2deg);
+        }
+        50% {
+          transform: translateX(12px) rotate(2deg);
+        }
+      }
+
+      .intro-title {
+        margin-top: 20px;
+        font-family: "Anton", sans-serif;
+        font-size: clamp(24px, 7vw, 30px);
+        letter-spacing: 2px;
+      }
+
+      .intro-sub {
+        margin-top: 6px;
+        color: var(--gray);
+        font-size: 13px;
+      }
+
+      .loading {
+        height: 5px;
+        margin-top: 25px;
+        overflow: hidden;
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 50px;
+      }
+
+      .loading-bar {
+        width: 0;
+        height: 100%;
+        background: linear-gradient(90deg, var(--blue), var(--blue-light));
+        box-shadow: 0 0 12px var(--blue-light);
+        animation: loading 2.2s ease forwards;
+      }
+
+      @keyframes loading {
+        to {
+          width: 100%;
+        }
+      }
+
+      /* =====================================================
+         MAIN
+      ===================================================== */
+
+      main {
+        width: min(100%, 900px);
+        margin: auto;
+        padding: calc(48px + env(safe-area-inset-top, 0px)) 16px 40px;
+        text-align: center;
+      }
+
+      .badge {
+        display: inline-block;
+        max-width: 100%;
+        padding: 8px 16px;
+        border: 1px solid rgba(24, 160, 255, 0.35);
+        border-radius: 999px;
+        color: #8dcaff;
+        background: rgba(0, 102, 255, 0.1);
+        font-size: clamp(9px, 2.6vw, 11px);
+        line-height: 1.4;
+        letter-spacing: 1.2px;
+        backdrop-filter: blur(6px);
+      }
+
+      h1 {
+        margin-top: 14px;
+        font-family: "Anton", sans-serif;
+        font-size: clamp(64px, 20vw, 112px);
+        line-height: 0.9;
+        letter-spacing: 2px;
+        text-shadow:
+          0 0 28px rgba(0, 102, 255, 0.45),
+          5px 5px 0 rgba(0, 102, 255, 0.2);
+      }
+
+      /* franja de carreras bajo el título */
+      .stripes {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        width: min(60%, 220px);
+        margin: 14px auto 0;
+      }
+      .stripes span {
+        height: 3px;
+        border-radius: 3px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--blue-light),
+          transparent
+        );
+      }
+      .stripes span:nth-child(2) {
+        width: 70%;
+        align-self: center;
+        opacity: 0.6;
+      }
+
+      .subtitle {
+        margin-top: 14px;
+        color: var(--gray);
+        font-size: clamp(13px, 3.6vw, 15px);
+      }
+
+      .intro-message {
+        max-width: 600px;
+        margin: 22px auto 0;
+        color: #e2eaf5;
+        font-size: clamp(14px, 3.8vw, 16px);
+        line-height: 1.8;
+      }
+
+      .intro-message strong {
+        color: white;
+      }
+
+      /* =====================================================
+         RAMITO (todo escala con el ancho del contenedor)
+      ===================================================== */
+
+      .bouquet-section {
+        margin-top: 34px;
+      }
+
+      .bouquet-label {
+        margin-bottom: 14px;
+        color: var(--gray);
+        font-size: clamp(12px, 3.3vw, 14px);
+      }
+
+      .bouquet-stage {
+        position: relative;
+        width: 100%;
+        max-width: 580px;
+        aspect-ratio: 10 / 11; /* el escenario crece/encoge proporcionalmente */
+        margin: auto;
+        overflow: hidden;
+        border-radius: clamp(24px, 7vw, 38px);
+        background:
+          radial-gradient(
+            circle at 50% 38%,
+            rgba(0, 102, 255, 0.22),
+            transparent 46%
+          ),
+          rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.09);
+        box-shadow:
+          inset 0 0 70px rgba(0, 102, 255, 0.06),
+          0 25px 60px rgba(0, 0, 0, 0.35);
+        isolation: isolate;
+      }
+
+      .bouquet-stage::before {
+        content: "";
+        position: absolute;
+        inset: 3.2%;
+        border: 1px dashed rgba(255, 255, 255, 0.07);
+        border-radius: clamp(18px, 5.5vw, 30px);
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .layer {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+      }
+      .layer.back {
+        z-index: 1;
+      }
+      .layer.front {
+        z-index: 10;
+        filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.45));
+      }
+
+      /* tallos dibujándose */
+      .stems path.stem {
+        stroke-dasharray: 1;
+        stroke-dashoffset: 1;
+        opacity: 0;
+        transition:
+          stroke-dashoffset 0.9s ease var(--sd, 0.2s),
+          opacity 0.3s ease var(--sd, 0.2s);
+      }
+      .bouquet-stage.open .stems path.stem {
+        stroke-dashoffset: 0;
+        opacity: 1;
+      }
+      .stems .leaf {
+        opacity: 0;
+        transition: opacity 0.6s ease 0.8s;
+      }
+      .bouquet-stage.open .stems .leaf {
+        opacity: 0.8;
+      }
+
+      /* =====================================================
+         CARRITOS  (posición en % del escenario)
+      ===================================================== */
+
+      .car {
+        position: absolute;
+        z-index: 5;
+        width: 34%;
+        padding: 0;
+        border: 0;
+        background: none;
+        color: inherit;
+        cursor: pointer;
+
+        /* estado cerrado: montoncito sobre el moño */
+        left: 50%;
+        top: 56%;
+        transform: translate(-50%, -50%) rotate(var(--r0, 0deg)) scale(0.62);
+
+        transition:
+          left 0.95s cubic-bezier(0.2, 0.9, 0.2, 1) var(--cd, 0s),
+          top 0.95s cubic-bezier(0.2, 0.9, 0.2, 1) var(--cd, 0s),
+          transform 0.95s cubic-bezier(0.2, 0.9, 0.2, 1) var(--cd, 0s);
+      }
+
+      .car:focus-visible {
+        outline: 2px solid var(--neon);
+        outline-offset: 2px;
+        border-radius: 14px;
+      }
+
+      .car .wrap {
+        display: block;
+      }
+
+      .car img {
+        display: block;
+        width: 100%;
+        height: auto;
+        pointer-events: none;
+        user-select: none;
+        -webkit-user-drag: none;
+        filter: drop-shadow(0 10px 8px rgba(0, 0, 0, 0.55));
+        transition:
+          transform 0.3s ease,
+          filter 0.3s ease;
+      }
+
+      .car:hover img,
+      .car:focus-visible img {
+        transform: scale(1.08) translateY(-4px);
+        filter: drop-shadow(0 16px 12px rgba(0, 0, 0, 0.6))
+          drop-shadow(0 0 14px rgba(0, 140, 255, 0.55));
+      }
+      .car:active img {
+        transform: scale(0.97);
+      }
+
+      /* abierto: cada carro va a su lugar (x, y en % del escenario) */
+      .bouquet-stage.open .car {
+        left: var(--x);
+        top: var(--y);
+        transform: translate(-50%, -50%) rotate(var(--r)) scale(1);
+      }
+      .bouquet-stage.open .car .wrap {
+        animation: bob 3.6s ease-in-out infinite;
+        animation-delay: var(--bd, 0s);
+      }
+      @keyframes bob {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-2.2%);
+        }
+      }
+
+      /* distribución en domo: 1 arriba, 2 en medio, 2 abajo */
+      .car-1 {
+        --x: 33%;
+        --y: 52.5%;
+        --r: -13deg;
+        --r0: -7deg;
+        --cd: 0.1s;
+        --bd: 0.2s;
+      }
+      .car-2 {
+        --x: 24%;
+        --y: 33%;
+        --r: -8deg;
+        --r0: -3deg;
+        --cd: 0.05s;
+        --bd: 0.8s;
+      }
+      .car-3 {
+        --x: 50%;
+        --y: 19%;
+        --r: 0deg;
+        --r0: 0deg;
+        --cd: 0s;
+        --bd: 1.4s;
+        z-index: 6;
+      }
+      .car-4 {
+        --x: 76%;
+        --y: 33%;
+        --r: 8deg;
+        --r0: 3deg;
+        --cd: 0.05s;
+        --bd: 2s;
+      }
+      .car-5 {
+        --x: 67%;
+        --y: 52.5%;
+        --r: 13deg;
+        --r0: 7deg;
+        --cd: 0.1s;
+        --bd: 2.6s;
+      }
+
+      /* punto que invita a tocar (antes de descubrir) */
+      .bouquet-stage.open .car:not(.discovered)::before {
+        content: "";
+        position: absolute;
+        top: 2%;
+        right: 6%;
+        width: clamp(9px, 2.6vw, 13px);
+        height: clamp(9px, 2.6vw, 13px);
+        border-radius: 50%;
+        background: var(--neon);
+        z-index: 2;
+        animation: ping 1.8s ease-out infinite;
+      }
+      @keyframes ping {
+        0% {
+          box-shadow: 0 0 0 0 rgba(125, 249, 255, 0.7);
+        }
+        100% {
+          box-shadow: 0 0 0 14px rgba(125, 249, 255, 0);
+        }
+      }
+
+      /* check de descubierto */
+      .car.discovered::after {
+        content: "✓";
+        position: absolute;
+        top: -2%;
+        right: 4%;
+        width: clamp(22px, 6.4vw, 30px);
+        height: clamp(22px, 6.4vw, 30px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: var(--blue);
+        color: white;
+        font-size: clamp(12px, 3.4vw, 15px);
+        font-weight: 700;
+        box-shadow: 0 5px 15px rgba(0, 102, 255, 0.6);
+        z-index: 2;
+      }
+
+      /* etiqueta (solo con mouse) */
+      .car-label {
+        position: absolute;
+        left: 50%;
+        bottom: -10%;
+        transform: translateX(-50%);
+        padding: 4px 10px;
+        white-space: nowrap;
+        border-radius: 999px;
+        background: rgba(2, 11, 25, 0.92);
+        border: 1px solid rgba(21, 156, 255, 0.3);
+        color: #9bcfff;
+        font-size: 10px;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+        z-index: 3;
+      }
+      @media (hover: hover) {
+        .bouquet-stage.open .car:hover .car-label {
+          opacity: 1;
+        }
+      }
+
+      /* =====================================================
+         BOTÓN
+      ===================================================== */
+
+      .open-button {
+        margin-top: 22px;
+        padding: 16px 32px;
+        min-height: 48px;
+        border: none;
+        border-radius: 999px;
+        background: linear-gradient(135deg, #0075ff, #0045c7);
+        color: white;
+        font-size: clamp(13px, 3.6vw, 14px);
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        cursor: pointer;
+        box-shadow:
+          0 12px 30px rgba(0, 102, 255, 0.35),
+          inset 0 1px 0 rgba(255, 255, 255, 0.25);
+        transition:
+          transform 0.25s ease,
+          box-shadow 0.25s ease,
+          opacity 0.3s ease;
+      }
+      .open-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 16px 35px rgba(0, 102, 255, 0.5);
+      }
+      .open-button:active {
+        transform: scale(0.96);
+      }
+      .open-button:focus-visible {
+        outline: 2px solid var(--neon);
+        outline-offset: 3px;
+      }
+
+      .instruction {
+        margin-top: 15px;
+        color: var(--gray);
+        font-size: clamp(12px, 3.3vw, 13px);
+      }
+
+      /* =====================================================
+         PROGRESO
+      ===================================================== */
+
+      .progress {
+        max-width: 400px;
+        margin: 22px auto 0;
+      }
+      .progress-text {
+        margin-bottom: 8px;
+        color: var(--gray);
+        font-size: 12px;
+      }
+      .progress-bar {
+        width: 100%;
+        height: 6px;
+        overflow: hidden;
+        border-radius: 50px;
+        background: rgba(255, 255, 255, 0.08);
+      }
+      .progress-fill {
+        width: 0;
+        height: 100%;
+        background: linear-gradient(90deg, var(--blue), var(--blue-light));
+        box-shadow: 0 0 12px var(--blue-light);
+        transition: width 0.5s ease;
+      }
+
+      /* =====================================================
+         MENSAJE FINAL
+      ===================================================== */
+
+      .final-card {
+        max-width: 650px;
+        margin: 40px auto 0;
+        padding: clamp(22px, 6vw, 32px);
+        border-radius: 27px;
+        background: linear-gradient(
+          145deg,
+          rgba(0, 102, 255, 0.16),
+          rgba(255, 255, 255, 0.03)
+        );
+        border: 1px solid rgba(0, 120, 255, 0.25);
+        backdrop-filter: blur(10px);
+        opacity: 0;
+        transform: translateY(25px);
+        pointer-events: none;
+        transition: 0.8s ease;
+      }
+      .final-card.show {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+      }
+      .final-icon {
+        font-size: 32px;
+        margin-bottom: 12px;
+      }
+      .final-card p {
+        color: #dbe6f4;
+        font-size: clamp(14px, 3.8vw, 16px);
+        line-height: 1.8;
+      }
+      .signature {
+        margin-top: 17px;
+        color: #68b6ff;
+        font-weight: 700;
+      }
+
+      /* =====================================================
+         MODAL
+      ===================================================== */
+
+      .modal {
+        position: fixed;
+        inset: 0;
+        z-index: 500;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: calc(16px + env(safe-area-inset-top, 0px)) 16px
+          calc(16px + env(safe-area-inset-bottom, 0px));
+        background: rgba(0, 5, 15, 0.8);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.35s ease;
+      }
+      .modal.show {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .modal-card {
+        position: relative;
+        width: min(100%, 430px);
+        max-height: 100%;
+        overflow-y: auto;
+        padding: clamp(24px, 6vw, 32px);
+        border-radius: 28px;
+        background:
+          radial-gradient(
+            circle at 50% 0%,
+            rgba(0, 102, 255, 0.22),
+            transparent 50%
+          ),
+          #061426;
+        border: 1px solid rgba(21, 156, 255, 0.25);
+        text-align: center;
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
+        transform: translateY(25px) scale(0.95);
+        transition: 0.4s cubic-bezier(0.2, 0.9, 0.2, 1);
+      }
+      .modal.show .modal-card {
+        transform: translateY(0) scale(1);
+      }
+
+      .modal-car {
+        display: block;
+        width: min(230px, 70%);
+        height: auto;
+        margin: 6px auto 0;
+        filter: drop-shadow(0 18px 15px rgba(0, 0, 0, 0.5))
+          drop-shadow(0 0 18px rgba(0, 102, 255, 0.35));
+      }
+      .modal-title {
+        margin-top: 10px;
+        font-family: "Anton", sans-serif;
+        font-size: clamp(22px, 6.5vw, 27px);
+        line-height: 1.15;
+      }
+      .modal-text {
+        margin-top: 14px;
+        color: #cbd8e8;
+        font-size: clamp(14px, 3.9vw, 15px);
+        line-height: 1.8;
+      }
+      .highlight {
+        color: #5db3ff;
+        font-weight: 700;
+      }
+
+      .close {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        width: 40px;
+        height: 40px;
+        border: none;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.08);
+        color: white;
+        font-size: 22px;
+        line-height: 1;
+        cursor: pointer;
+        z-index: 2;
+      }
+      .close:focus-visible {
+        outline: 2px solid var(--neon);
+      }
+
+      /* =====================================================
+         SPARKLES
+      ===================================================== */
+
+      .spark {
+        position: fixed;
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: #69baff;
+        box-shadow: 0 0 8px #69baff;
+        pointer-events: none;
+        z-index: 2;
+        animation: sparkle 3s linear infinite;
+      }
+      @keyframes sparkle {
+        0% {
+          transform: translate(0, 30px) scale(0.4);
+          opacity: 0;
+        }
+        30% {
+          opacity: 0.8;
+        }
+        100% {
+          transform: translate(var(--dx, 0px), -120px) scale(1);
+          opacity: 0;
+        }
+      }
+
+      footer {
+        margin-top: 35px;
+        padding: 20px 10px calc(20px + env(safe-area-inset-bottom, 0px));
+        color: #6a7d94;
+        font-size: 11px;
+        line-height: 1.6;
+      }
+
+      /* =====================================================
+         PANTALLAS MUY CHICAS / PANTALLAS ANCHAS
+      ===================================================== */
+
+      @media (max-width: 380px) {
+        main {
+          padding-left: 12px;
+          padding-right: 12px;
+        }
+        .car {
+          width: 36%;
+        }
+      }
+
+      @media (min-width: 700px) {
+        main {
+          padding-top: 64px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- INTRO -->
+    <div class="intro" id="intro">
+      <div class="intro-content">
+        <img src="/hotweel_2.png" class="intro-car" alt="Hot Wheels" />
+        <div class="intro-title">Preparando sorpresa...</div>
+        <div class="intro-sub">respiraaa 🏎️</div>
+        <div class="loading">
+          <div class="loading-bar"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTENIDO -->
+    <main>
+      <div class="badge">DE TODAS LAS PERSONALIDADES DE SAYU</div>
+
+      <h1>HARRY</h1>
+
+      <div class="stripes" aria-hidden="true"><span></span><span></span></div>
+
+      <div class="subtitle">Espero aprecies mi inspiración 🏎️</div>
+
+      <div class="intro-message">
+        Te hice un ramito, pero hubo un pequeño problema...
+        <br />
+        <strong> no encontré flores que fueran suficientemente tú 🤭 </strong>
+      </div>
+
+      <!-- RAMITO -->
+      <section class="bouquet-section">
+        <div class="bouquet-label">
+          Un pequeño ramito de Hot Wheels para ti 💙
+        </div>
+
+        <div class="bouquet-stage" id="bouquet">
+          <!-- TALLOS (detrás de los carros) -->
+          <svg
+            class="layer back"
+            viewBox="0 0 100 110"
+            preserveAspectRatio="xMidYMid meet"
+            aria-hidden="true"
+          >
+            <defs>
+              <linearGradient
+                id="stemG"
+                gradientUnits="userSpaceOnUse"
+                x1="0"
+                y1="90"
+                x2="0"
+                y2="18"
+              >
+                <stop offset="0" stop-color="#064fb5" />
+                <stop offset="1" stop-color="#18a0ff" />
+              </linearGradient>
+            </defs>
+            <g
+              class="stems"
+              fill="none"
+              stroke="url(#stemG)"
+              stroke-width="1.3"
+              stroke-linecap="round"
+            >
+              <path
+                class="stem"
+                pathLength="1"
+                style="--sd: 0.15s"
+                d="M50 88 C48 80 40 72 33 62"
+              />
+              <path
+                class="stem"
+                pathLength="1"
+                style="--sd: 0.1s"
+                d="M50 88 C44 76 30 58 24 40"
+              />
+              <path
+                class="stem"
+                pathLength="1"
+                style="--sd: 0s"
+                d="M50 88 C50 70 50 46 50 26"
+              />
+              <path
+                class="stem"
+                pathLength="1"
+                style="--sd: 0.1s"
+                d="M50 88 C56 76 70 58 76 40"
+              />
+              <path
+                class="stem"
+                pathLength="1"
+                style="--sd: 0.15s"
+                d="M50 88 C52 80 60 72 67 62"
+              />
+            </g>
+            <g class="stems">
+              <path
+                class="leaf"
+                fill="#159cff"
+                d="M45 78 q-7 -1 -10 -7 q7 -1 10 7z"
+              />
+              <path
+                class="leaf"
+                fill="#159cff"
+                d="M55 78 q7 -1 10 -7 q-7 -1 -10 7z"
+              />
+              <path
+                class="leaf"
+                fill="#0f84e8"
+                d="M50.5 66 q6 -2 9 -8 q-7 0 -9 8z"
+              />
+              <path
+                class="leaf"
+                fill="#0f84e8"
+                d="M49.5 60 q-6 -2 -9 -8 q7 0 9 8z"
+              />
+            </g>
+          </svg>
+
+          <!-- CARRITO 1 -->
+          <button
+            class="car car-1"
+            type="button"
+            data-index="0"
+            onclick="openLetter(0)"
+            aria-label="Abrir carrito 1: motivación"
+          >
+            <span class="wrap"
+              ><img src="/hotweel.png" alt="Hot Wheels"
+            /></span>
+            <span class="car-label">motivación 🏁</span>
+          </button>
+
+          <!-- CARRITO 2 -->
+          <button
+            class="car car-2"
+            type="button"
+            data-index="1"
+            onclick="openLetter(1)"
+            aria-label="Abrir carrito 2: gatito"
+          >
+            <span class="wrap"
+              ><img src="/hotweel.png" alt="Hot Wheels"
+            /></span>
+            <span class="car-label">gatito 🐱</span>
+          </button>
+
+          <!-- CARRITO 3 -->
+          <button
+            class="car car-3"
+            type="button"
+            data-index="2"
+            onclick="openLetter(2)"
+            aria-label="Abrir carrito 3: angelito"
+          >
+            <span class="wrap"
+              ><img src="/hotweel.png" alt="Hot Wheels"
+            /></span>
+            <span class="car-label">angelito 😇</span>
+          </button>
+
+          <!-- CARRITO 4 -->
+          <button
+            class="car car-4"
+            type="button"
+            data-index="3"
+            onclick="openLetter(3)"
+            aria-label="Abrir carrito 4: hotdog"
+          >
+            <span class="wrap"
+              ><img src="/hotweel.png" alt="Hot Wheels"
+            /></span>
+            <span class="car-label">hotdog 🤭</span>
+          </button>
+
+          <!-- CARRITO 5 -->
+          <button
+            class="car car-5"
+            type="button"
+            data-index="4"
+            onclick="openLetter(4)"
+            aria-label="Abrir carrito 5: pastelito"
+          >
+            <span class="wrap"
+              ><img src="/hotweel.png" alt="Hot Wheels"
+            /></span>
+            <span class="car-label">pastelito 🍫</span>
+          </button>
+
+          <!-- PAPEL + MOÑO (delante, escala con el escenario) -->
+          <svg
+            class="layer front"
+            viewBox="0 0 100 110"
+            preserveAspectRatio="xMidYMid meet"
+            aria-hidden="true"
+          >
+            <defs>
+              <linearGradient id="paperG" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#1a4f9e" />
+                <stop offset="1" stop-color="#071a3a" />
+              </linearGradient>
+              <linearGradient id="bowG" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#2cb0ff" />
+                <stop offset="1" stop-color="#0046c7" />
+              </linearGradient>
+            </defs>
+            <!-- papel -->
+            <polygon
+              points="27,78 73,78 57,107 43,107"
+              fill="url(#paperG)"
+              stroke="#7df9ff"
+              stroke-opacity=".35"
+              stroke-width=".4"
+            />
+            <polygon
+              points="33,80 50,84 67,80 55,105 45,105"
+              fill="rgba(125,249,255,.12)"
+            />
+            <!-- colas del moño -->
+            <path d="M48 89 L42 101 L47 98.5 L49.5 103 Z" fill="#0056d6" />
+            <path d="M52 89 L58 101 L53 98.5 L50.5 103 Z" fill="#0056d6" />
+            <!-- lazos -->
+            <path
+              d="M50 87 C42 77 30 80 32 88 C34 95 44 93 50 87 Z"
+              fill="url(#bowG)"
+            />
+            <path
+              d="M50 87 C58 77 70 80 68 88 C66 95 56 93 50 87 Z"
+              fill="url(#bowG)"
+            />
+            <!-- nudo -->
+            <circle cx="50" cy="87.5" r="4" fill="#24aaff" />
+            <circle cx="49" cy="86.5" r="1.3" fill="#fff" opacity=".5" />
+          </svg>
+        </div>
+
+        <!-- BOTÓN -->
+        <button class="open-button" id="openButton" onclick="openBouquet()">
+          ABRIR RAMITO 💙
+        </button>
+
+        <div class="instruction">
+          Toca un carrito para descubrir qué tiene para ti 👀
+        </div>
+
+        <!-- PROGRESO -->
+        <div class="progress">
+          <div class="progress-text" id="progressText">
+            Has descubierto 0 de 5 carritos
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- MENSAJE FINAL -->
+      <div class="final-card" id="finalCard">
+        <div class="final-icon">🏎️💙</div>
+        <p>
+          Espero te haya gustado... y te sirva de motivación para terminar la
+          chambita. Y si no puedes terminar, respira profundo, ya tú sabes, como
+          te enseñé. Eso siempre funciona jaja
+        </p>
+        <div class="signature">Con cariño, Sayu</div>
+      </div>
+
+      <footer>
+        Hecho especialmente para un pastelito de chocolate llamado Harry 🍫
+      </footer>
+    </main>
+
+    <!-- MODAL -->
+    <div
+      class="modal"
+      id="modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modalTitle"
+      onclick="closeOutside(event)"
+    >
+      <div class="modal-card">
+        <button class="close" onclick="closeLetter()" aria-label="Cerrar">
+          ×
+        </button>
+
+        <img src="/hotweel.png" class="modal-car" alt="Hot Wheels" />
+
+        <div class="modal-title" id="modalTitle"></div>
+        <div class="modal-text" id="modalText"></div>
+      </div>
+    </div>
+
+    <script>
+      /* =====================================================
+         MENSAJES
+      ===================================================== */
+
+      const letters = [
+        {
+          title: "Para cuando necesites motivación 🏁",
+          text: `
+          Por si necesitas motivación para terminar la chambita...
+          espero que esto sirva.
+          <span class="highlight">
+            Me inspiré jejeje.
+          </span>
+          `,
+        },
+        {
+          title: "Por ser un gatito cute 🐱",
+          text: `
+          Por haberte portado bien y ser un
+          <span class="highlight">
+            gatito muy cute.
+          </span>
+          Igual como el de la foto de perfil.
+          `,
+        },
+        {
+          title: "Para el mood angelito 😇",
+          text: `
+          Porque dejas que pueda ver el
+          <span class="highlight">
+            mood angelito y cariñoso
+          </span>.
+          Ya sabes, ese mood siempre gana.
+          `,
+        },
+        {
+          title: "Porque Hot Wheels = Hotdog o no? 🤭",
+          text: `
+          Debido al fenómeno del niño ese mood debe
+          estar activado, también merece un carrito.
+          <span class="highlight">
+            Se le aprecia.
+          </span>
+          `,
+        },
+        {
+          title: "Y por ser un pastelito devorable 🤭",
+          text: `
+          Porque te dejaste comer por toda mi family jajaja,
+          okno.
+          Por ser un pastel de chocolate con bolitas de colores.
+          `,
+        },
+      ];
+
+      /* =====================================================
+         VARIABLES
+      ===================================================== */
+
+      const intro = document.getElementById("intro");
+      const bouquet = document.getElementById("bouquet");
+      const modal = document.getElementById("modal");
+      const modalTitle = document.getElementById("modalTitle");
+      const modalText = document.getElementById("modalText");
+      const progressText = document.getElementById("progressText");
+      const progressFill = document.getElementById("progressFill");
+      const finalCard = document.getElementById("finalCard");
+      const openButton = document.getElementById("openButton");
+      const opened = new Set();
+
+      /* =====================================================
+         INTRO
+      ===================================================== */
+
+      setTimeout(() => {
+        intro.classList.add("hide");
+      }, 2600);
+
+      /* =====================================================
+         ABRIR RAMITO
+      ===================================================== */
+
+      function openBouquet() {
+        if (bouquet.classList.contains("open")) return;
+
+        bouquet.classList.add("open");
+        openButton.innerHTML = "EL RAMITO ES TUYO 💙";
+        openButton.style.opacity = ".75";
+        createSparkles();
+      }
+
+      /* =====================================================
+         ABRIR MENSAJE
+      ===================================================== */
+
+      function openLetter(index) {
+        // si tocan un carrito con el ramo cerrado, primero se abre el ramo
+        if (!bouquet.classList.contains("open")) {
+          openBouquet();
+          return;
+        }
+
+        opened.add(index);
+
+        const car = document.querySelector(`.car[data-index="${index}"]`);
+        car.classList.add("discovered");
+
+        modalTitle.innerHTML = letters[index].title;
+        modalText.innerHTML = letters[index].text;
+        modal.classList.add("show");
+
+        updateProgress();
+      }
+
+      function closeLetter() {
+        modal.classList.remove("show");
+      }
+
+      function closeOutside(event) {
+        if (event.target === modal) closeLetter();
+      }
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") closeLetter();
+      });
+
+      /* =====================================================
+         PROGRESO
+      ===================================================== */
+
+      function updateProgress() {
+        const count = opened.size;
+
+        progressText.textContent = `Has descubierto ${count} de 5 carritos`;
+        progressFill.style.width = `${count * 20}%`;
+
+        if (count === 5) {
+          setTimeout(() => {
+            finalCard.classList.add("show");
+            finalCard.scrollIntoView({ behavior: "smooth", block: "center" });
+            celebration();
+          }, 600);
+        }
+      }
+
+      /* =====================================================
+         BRILLITOS
+      ===================================================== */
+
+      function createSparkles() {
+        for (let i = 0; i < 20; i++) {
+          const spark = document.createElement("div");
+          spark.className = "spark";
+          spark.style.left = Math.random() * 100 + "vw";
+          spark.style.top = 60 + Math.random() * 40 + "vh";
+          spark.style.setProperty("--dx", Math.random() * 40 - 20 + "px");
+          spark.style.animationDelay = Math.random() * 3 + "s";
+          spark.style.animationDuration = 2 + Math.random() * 3 + "s";
+          document.body.appendChild(spark);
+        }
+      }
+
+      /* =====================================================
+         CELEBRACIÓN FINAL
+      ===================================================== */
+
+      function celebration() {
+        for (let i = 0; i < 35; i++) {
+          const spark = document.createElement("div");
+          spark.className = "spark";
+          spark.style.left = "50vw";
+          spark.style.top = "40vh";
+          spark.style.width = "6px";
+          spark.style.height = "6px";
+          spark.style.setProperty("--dx", Math.random() * 240 - 120 + "px");
+          spark.style.animationDuration = 0.8 + Math.random() * 1.5 + "s";
+          document.body.appendChild(spark);
+          setTimeout(() => spark.remove(), 2500);
+        }
+      }
+    </script>
+  </body>
+</html>
